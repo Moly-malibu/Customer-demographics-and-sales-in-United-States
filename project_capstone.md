@@ -1,4 +1,26 @@
 
+#  Customer demographics and sales in United States
+
+# ADD - Architectural Decisions 
+
+The cicle to analysis and to take decisions we will supporte be CRISP-DN: 
+
+                        Business Understanding 
+                        
+                        Data Understanding 
+                        
+                        Data Preparation 
+                        
+                        Modeling
+                        
+                        Evaluation
+                        
+                        Deployment
+
+## BUSINESS UNDERSTANDING:
+
+This project will start from the assumption that the company will launch a new product, so it must carry out the market segmentation study in order to determine which will be the market niche? where it will offer the product? what characteristics the target market and consumers must meet? objective, so a database was selected that shows the demographic composition and sales, and what are these customers consume on a daily basis? and finally, the company will determine the actions to take supported by the analysis of the Data Scientist and its algorithms.
+
 
 ```python
 
@@ -30,13 +52,7 @@ if not hasattr(body, "__iter__"): body.__iter__ = types.MethodType( __iter__, bo
 
 df = pd.read_csv(body)
 df.head()
-
 ```
-
-    Waiting for a Spark session to start...
-    Spark Initialization Done! ApplicationId = app-20210312205645-0001
-    KERNEL_ID = e5f91dd5-1ac0-43ae-a08c-440b7347183f
-
 
 
 
@@ -210,7 +226,7 @@ df.head()
 
 
 
-# Preparing Data
+# Data Understanding and Preparing
 
 
 ```python
@@ -225,7 +241,7 @@ df = df.drop(columns=['ADDRESS1', 'CITY', 'COUNTRY_CODE', 'POSTAL_CODE', 'POSTAL
 
 
 ```python
-df
+df.head()
 ```
 
 
@@ -393,170 +409,74 @@ df
       <td>0</td>
       <td>0</td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>13728</th>
-      <td>Mrs.</td>
-      <td>CA</td>
-      <td>American Express</td>
-      <td>Phone</td>
-      <td>HighValue</td>
-      <td>Gen_Z</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>13729</th>
-      <td>Mrs.</td>
-      <td>CA</td>
-      <td>American Express</td>
-      <td>Phone</td>
-      <td>HighValue</td>
-      <td>Gen_Z</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>13730</th>
-      <td>Mrs.</td>
-      <td>CA</td>
-      <td>American Express</td>
-      <td>Phone</td>
-      <td>MediumValue</td>
-      <td>Gen_Z</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>13731</th>
-      <td>Mr.</td>
-      <td>CA</td>
-      <td>JCB</td>
-      <td>Phone</td>
-      <td>LowValue</td>
-      <td>Gen_Y</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>13732</th>
-      <td>Mr.</td>
-      <td>CA</td>
-      <td>JCB</td>
-      <td>Phone</td>
-      <td>LowValue</td>
-      <td>Gen_Y</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
   </tbody>
 </table>
-<p>13733 rows × 35 columns</p>
+<p>5 rows × 35 columns</p>
 </div>
 
 
 
 ## Data set Description:
 
-the data set Customer demographics and sales has 13.733 rows and 62 columns, but after cleanned data set has 36 row:
+The data set Customer demographics and sales has 13.733 rows and 62 columns, but after cleanned data set has 36 row:
 
 
 ```python
-df.shape
+print('Rows and Colums:', df.shape)
+```
+
+    Rows and Colums: (13733, 35)
+
+
+
+```python
+df['STATE'] = df['STATE'].fillna(0) #fill Columns with out date
+```
+
+
+```python
+df.isna().sum() 
 ```
 
 
 
 
-    (13733, 35)
+    GenderCode             0
+    STATE                  0
+    CREDITCARD_TYPE        0
+    PURCHASE_TOUCHPOINT    0
+    ORDER_TYPE             0
+    GENERATION             0
+    Baby Food              0
+    Diapers                0
+    Formula                0
+    Lotion                 0
+    Baby wash              0
+    Wipes                  0
+    Fresh Fruits           0
+    Fresh Vegetables       0
+    Beer                   0
+    Wine                   0
+    Club Soda              0
+    Sports Drink           0
+    Chips                  0
+    Popcorn                0
+    Oatmeal                0
+    Medicines              0
+    Canned Foods           0
+    Cigarettes             0
+    Cheese                 0
+    Cleaning Products      0
+    Condiments             0
+    Frozen Foods           0
+    Kitchen Items          0
+    Meat                   0
+    Office Supplies        0
+    Personal Care          0
+    Pet Supplies           0
+    Sea Food               0
+    Spices                 0
+    dtype: int64
 
 
 
@@ -576,7 +496,7 @@ count(df, spark) #see the elements in string
 
 
     GenderCode             13733
-    STATE                  12146
+    STATE                  13733
     CREDITCARD_TYPE        13733
     PURCHASE_TOUCHPOINT    13733
     ORDER_TYPE             13733
@@ -642,11 +562,8 @@ def getFieldName(df, spark):
 
 
 ```python
-getFieldName(df, spark) #Name columns
+print(getFieldName(df, spark)) #Name columns
 ```
-
-
-
 
     Index(['GenderCode', 'STATE', 'CREDITCARD_TYPE', 'PURCHASE_TOUCHPOINT',
            'ORDER_TYPE', 'GENERATION', 'Baby Food', 'Diapers', 'Formula', 'Lotion',
@@ -657,7 +574,6 @@ getFieldName(df, spark) #Name columns
            'Meat', 'Office Supplies', 'Personal Care', 'Pet Supplies', 'Sea Food',
            'Spices'],
           dtype='object')
-
 
 
 ## Data set Statistic:
@@ -913,7 +829,34 @@ df.describe()
 
 
 ```python
-df.corr(method='pearson')
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+plt.style.use('ggplot')
+%matplotlib inline
+import matplotlib
+matplotlib.rcParams['figure.figsize'] = (40,5)
+import warnings 
+warnings.filterwarnings('ignore')
+```
+
+
+```python
+df[df.columns[6:-1]].boxplot();
+```
+
+
+![png](output_22_0.png)
+
+
+## Correlation:
+
+The correlation help to measure linear relationship between two quantitative variables, positive correlation is cause when the variables move in same direction, while negative correlation the variance increases as the other decreases and vice versa. if we analysis the products wine with fresh vegetable the correlation is negative -0.022. the customer buy more win decrease to buy fresh vegetables.
+
+
+```python
+df.corr(method='pearson') #Correlation by products.
 ```
 
 
@@ -1666,7 +1609,40 @@ df.corr(method='pearson')
 
 
 ```python
-df.cov()
+corr_matrix = df.corr()
+sns.heatmap(corr_matrix)
+```
+
+
+
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x7f767c1dd410>
+
+
+
+
+![png](output_26_1.png)
+
+
+## Covariance:
+
+Large covariance mean a strong relationship between variable, positive covariance mean that the product return move together and the move inverse if the negative covariance. Example the beer with fresh vegetables the return is minimun 0.004401.
+
+### The formula is:
+
+Cov(X,Y) = Σ E((X-μ)E(Y-ν)) / n-1 where:
+
+X is a random variable
+
+E(X) = μ is the expected value (the mean) of the random variable X and
+
+E(Y) = ν is the expected value (the mean) of the random variable Y
+
+n = the number of items in the data set
+
+
+```python
+df.cov() #Covariance by products
 ```
 
 
@@ -2417,7 +2393,17 @@ df.cov()
 
 
 
-### Skewness and Kurtosis:
+
+```python
+cov_matrix = df.cov()
+sns.heatmap(cov_matrix);
+```
+
+
+![png](output_31_0.png)
+
+
+## Skewness and Kurtosis:
 
 Skewness use to measure symmetry of data along with the mean value. In this Data set some products as chips, Club Soda, Canned Foods have 0 in Skewness this mean that the data is symmetric. We need to remember that negative Skewness means more people buy the product.
 
@@ -2465,7 +2451,7 @@ print(df1.skew())
 
 
 ```python
-df1.describe()
+df1.describe() #Describe statistic information by products.
 ```
 
 
@@ -2714,6 +2700,8 @@ df1.describe()
 
 
 ```python
+#Graphics compared de correlation by products.
+
 import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -2724,8 +2712,10 @@ plt.show()
 ```
 
 
-![png](output_20_0.png)
+![png](output_36_0.png)
 
+
+## The Kurtosis 
 
 The Kurtosis products as Cigarettes, Spices has to normal distribution, the products as Wine, Club Soda, Chips, Popcorn, Canned Foods, Condiments have a negative Kurtosis, tha means this products have limited customer to buy. The others products have positive kurtosis.
 
@@ -2770,29 +2760,77 @@ print(df1.kurtosis())
 
 
 ```python
+#Graphic that show dataframe relationship Lotion with the others products.
 import seaborn as sns
 
-sns.distplot(df1['Beer'], hist=True, kde=True)
+sns.distplot(df1['Lotion'], hist=True, kde=True)
 ```
 
-    /opt/ibm/conda/miniconda/lib/python/site-packages/seaborn/distributions.py:369: UserWarning: Default bandwidth for data is 0; skipping density estimation.
-      warnings.warn(msg, UserWarning)
+
+
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x7f76344e7ed0>
 
 
 
 
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7fc9c2a66790>
-
-
-
-
-![png](output_23_2.png)
+![png](output_40_1.png)
 
 
 ## Feature Engineering:
 
+The database object of this study presents the features of segmenting the market into two categories, one is by-products and the other by qualities or characterization of the customers, so it will be coded in such a way as to show us the grouped information unifying it to In order to respond to which market segmentation the product should be directed and in which product more emphasis should be placed.
+
 ### Categorical Variable:
+
+-GenderCode
+     
+     * Master
+     * Miss
+     * Mr.
+     * Mrs.
+
+-STATE
+
+     * All state of United States.
+
+-CREDITCARD_TYPE
+
+     * American Express	
+     
+     * Diners Club	
+     
+     * Discover	
+     
+     * JCB	
+     
+     * Master Card	VISA
+
+
+-PURCHASE_TOUCHPOINT
+      
+      * Desktop
+      
+      * Phone
+
+
+-ORDER_TYPE
+
+      * High Value		
+      
+      * Medium Value
+      
+      * Low Value
+
+-GENERATION:
+
+      * Baby Boomer that represent 76 million people born between 1946 and 1964.
+      
+      * generation X born between 1965 and 1980.
+      
+      * generation Z born after 1997.
+
+#### Analysis:
 
 In this dataset the generation Baby Boomer that represent 76 million people born between 1946 and 1964. They expenden more money that generation X, Y and Z, being generation X the ones who spend the least. See Table:
 
@@ -2974,12 +3012,12 @@ tab.plot(kind='box')
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7fc9c28ae590>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7f763473c650>
 
 
 
 
-![png](output_29_1.png)
+![png](output_47_1.png)
 
 
 
@@ -3058,7 +3096,7 @@ tab
 
 
 
-![png](output_30_1.png)
+![png](output_48_1.png)
 
 
 
@@ -3108,14 +3146,16 @@ plt.hist(tab, bins=60)
 
 
 
-![png](output_31_1.png)
+![png](output_49_1.png)
 
+
+## Analysis Cross table by category
 
 The trend in the use of Credit card the generation Boomers continue to predominate, followed by generation Z (born after 1997)
 
 
 ```python
-tab2 = pd.crosstab(df['GENERATION'], df['CREDITCARD_TYPE'])
+tab2 = pd.crosstab(df['GENERATION'], df['CREDITCARD_TYPE']) #A crosstable is a common type of table featuring a matrix of values between two or more orthogonal lists of header data
 tab2
 ```
 
@@ -3202,7 +3242,7 @@ tab2
 
 
 ```python
-tab2.describe()
+tab2.describe() #Statistic categorical compared the use of different credit card by generations.
 ```
 
 
@@ -3315,16 +3355,18 @@ tab2.describe()
 
 
 ```python
-tab2.plot();
+tab2.plot(); #Graphic used credit card type by generation.
 ```
 
 
-![png](output_35_0.png)
+![png](output_54_0.png)
 
+
+## Statistic categorical compared the use of different credit card by gender.
 
 
 ```python
-tab3 = pd.crosstab(df['CREDITCARD_TYPE'], df['GenderCode'])
+tab3 = pd.crosstab(df['CREDITCARD_TYPE'], df['GenderCode']) #American express is the prefer by MR and MRS.
 tab3
 ```
 
@@ -3508,28 +3550,18 @@ tab3.describe()
 
 
 ```python
-import seaborn as sns
-
-sns.set(style="ticks", color_codes=True)
-pair = sns.pairplot(tab3)
+tab3.plot(); #Graphic to analysis the correlation into gender and credit card type.
 ```
 
 
-![png](output_38_0.png)
+![png](output_58_0.png)
 
 
-
-```python
-tab3.plot();
-```
-
-
-![png](output_39_0.png)
-
+## Statistic categorical compared the use of different Value by gender.
 
 
 ```python
-tab4 = pd.crosstab(df['GenderCode'], df['ORDER_TYPE'])
+tab4 = pd.crosstab(df['GenderCode'], df['ORDER_TYPE']) #this crosstable and statistic description tell us that the mayority people expend in low value, fallowed by high value, for the Baby_Boomers and Gen_Y
 tab4
 ```
 
@@ -3690,12 +3722,12 @@ tab4.plot(kind='density')
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7fc9c2926350>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7f75f061aa90>
 
 
 
 
-![png](output_42_1.png)
+![png](output_62_1.png)
 
 
 
@@ -3707,7 +3739,7 @@ pair = sns.pairplot(tab4)
 ```
 
 
-![png](output_43_0.png)
+![png](output_63_0.png)
 
 
 
@@ -3879,8 +3911,10 @@ tab5.plot();
 ```
 
 
-![png](output_46_0.png)
+![png](output_66_0.png)
 
+
+## Statistic categorical compared the use of different Purchase touch point by gender.
 
 Shopping continues with the trend towards online or telephone purchases, being men and women parents the ones who currently use this system the most.
 
@@ -4036,7 +4070,7 @@ plt.show()
 ```
 
 
-![png](output_50_0.png)
+![png](output_71_0.png)
 
 
 
@@ -4047,8 +4081,10 @@ sns.catplot(x='Desktop', y='Phone', kind='bar', data=tab6, height=7);
 ```
 
 
-![png](output_51_0.png)
+![png](output_72_0.png)
 
+
+## Statistic categorical compared the use of different Purchase touch point by generation.
 
 Generation Z is the principal used the shopping online or phone, Baby Boomers the most used purchase direct in the store and Phone.
 
@@ -4216,13 +4252,15 @@ tab7.plot(kind = 'density')
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7fc9c2135ed0>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7f75f07f2b90>
 
 
 
 
-![png](output_55_1.png)
+![png](output_77_1.png)
 
+
+## Statistic categorical compared the use of different State by generation.
 
 
 ```python
@@ -4251,6 +4289,7 @@ tab8
   <thead>
     <tr style="text-align: right;">
       <th>STATE</th>
+      <th>0</th>
       <th>AB</th>
       <th>ACT</th>
       <th>AG</th>
@@ -4260,7 +4299,6 @@ tab8
       <th>AO</th>
       <th>AP</th>
       <th>AQ</th>
-      <th>AR</th>
       <th>...</th>
       <th>VE</th>
       <th>VI</th>
@@ -4301,6 +4339,7 @@ tab8
   <tbody>
     <tr>
       <th>Baby_Boomers</th>
+      <td>629</td>
       <td>5</td>
       <td>0</td>
       <td>3</td>
@@ -4310,7 +4349,6 @@ tab8
       <td>0</td>
       <td>7</td>
       <td>17</td>
-      <td>11</td>
       <td>...</td>
       <td>11</td>
       <td>2</td>
@@ -4325,6 +4363,7 @@ tab8
     </tr>
     <tr>
       <th>Gen_X</th>
+      <td>192</td>
       <td>5</td>
       <td>0</td>
       <td>1</td>
@@ -4334,7 +4373,6 @@ tab8
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>14</td>
       <td>...</td>
       <td>7</td>
       <td>10</td>
@@ -4349,6 +4387,7 @@ tab8
     </tr>
     <tr>
       <th>Gen_Y</th>
+      <td>398</td>
       <td>9</td>
       <td>0</td>
       <td>0</td>
@@ -4358,7 +4397,6 @@ tab8
       <td>3</td>
       <td>9</td>
       <td>6</td>
-      <td>12</td>
       <td>...</td>
       <td>4</td>
       <td>1</td>
@@ -4373,6 +4411,7 @@ tab8
     </tr>
     <tr>
       <th>Gen_Z</th>
+      <td>368</td>
       <td>6</td>
       <td>5</td>
       <td>0</td>
@@ -4382,7 +4421,6 @@ tab8
       <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>5</td>
       <td>...</td>
       <td>9</td>
       <td>11</td>
@@ -4397,7 +4435,7 @@ tab8
     </tr>
   </tbody>
 </table>
-<p>4 rows × 145 columns</p>
+<p>4 rows × 146 columns</p>
 </div>
 
 
@@ -4428,6 +4466,7 @@ tab8.describe()
   <thead>
     <tr style="text-align: right;">
       <th>STATE</th>
+      <th>0</th>
       <th>AB</th>
       <th>ACT</th>
       <th>AG</th>
@@ -4437,7 +4476,6 @@ tab8.describe()
       <th>AO</th>
       <th>AP</th>
       <th>AQ</th>
-      <th>AR</th>
       <th>...</th>
       <th>VE</th>
       <th>VI</th>
@@ -4455,6 +4493,7 @@ tab8.describe()
     <tr>
       <th>count</th>
       <td>4.000000</td>
+      <td>4.000000</td>
       <td>4.00</td>
       <td>4.000000</td>
       <td>4.000000</td>
@@ -4463,7 +4502,6 @@ tab8.describe()
       <td>4.00</td>
       <td>4.000000</td>
       <td>4.00000</td>
-      <td>4.000000</td>
       <td>...</td>
       <td>4.000000</td>
       <td>4.000000</td>
@@ -4478,6 +4516,7 @@ tab8.describe()
     </tr>
     <tr>
       <th>mean</th>
+      <td>396.750000</td>
       <td>6.250000</td>
       <td>1.25</td>
       <td>1.000000</td>
@@ -4487,7 +4526,6 @@ tab8.describe()
       <td>0.75</td>
       <td>4.250000</td>
       <td>5.75000</td>
-      <td>10.500000</td>
       <td>...</td>
       <td>7.750000</td>
       <td>6.000000</td>
@@ -4502,6 +4540,7 @@ tab8.describe()
     </tr>
     <tr>
       <th>std</th>
+      <td>179.527853</td>
       <td>1.892969</td>
       <td>2.50</td>
       <td>1.414214</td>
@@ -4511,7 +4550,6 @@ tab8.describe()
       <td>1.50</td>
       <td>4.425306</td>
       <td>8.01561</td>
-      <td>3.872983</td>
       <td>...</td>
       <td>2.986079</td>
       <td>5.228129</td>
@@ -4526,6 +4564,7 @@ tab8.describe()
     </tr>
     <tr>
       <th>min</th>
+      <td>192.000000</td>
       <td>5.000000</td>
       <td>0.00</td>
       <td>0.000000</td>
@@ -4535,7 +4574,6 @@ tab8.describe()
       <td>0.00</td>
       <td>0.000000</td>
       <td>0.00000</td>
-      <td>5.000000</td>
       <td>...</td>
       <td>4.000000</td>
       <td>1.000000</td>
@@ -4550,6 +4588,7 @@ tab8.describe()
     </tr>
     <tr>
       <th>25%</th>
+      <td>324.000000</td>
       <td>5.000000</td>
       <td>0.00</td>
       <td>0.000000</td>
@@ -4559,7 +4598,6 @@ tab8.describe()
       <td>0.00</td>
       <td>0.750000</td>
       <td>0.00000</td>
-      <td>9.500000</td>
       <td>...</td>
       <td>6.250000</td>
       <td>1.750000</td>
@@ -4574,6 +4612,7 @@ tab8.describe()
     </tr>
     <tr>
       <th>50%</th>
+      <td>383.000000</td>
       <td>5.500000</td>
       <td>0.00</td>
       <td>0.500000</td>
@@ -4583,7 +4622,6 @@ tab8.describe()
       <td>0.00</td>
       <td>4.000000</td>
       <td>3.00000</td>
-      <td>11.500000</td>
       <td>...</td>
       <td>8.000000</td>
       <td>6.000000</td>
@@ -4598,6 +4636,7 @@ tab8.describe()
     </tr>
     <tr>
       <th>75%</th>
+      <td>455.750000</td>
       <td>6.750000</td>
       <td>1.25</td>
       <td>1.500000</td>
@@ -4607,7 +4646,6 @@ tab8.describe()
       <td>0.75</td>
       <td>7.500000</td>
       <td>8.75000</td>
-      <td>12.500000</td>
       <td>...</td>
       <td>9.500000</td>
       <td>10.250000</td>
@@ -4622,6 +4660,7 @@ tab8.describe()
     </tr>
     <tr>
       <th>max</th>
+      <td>629.000000</td>
       <td>9.000000</td>
       <td>5.00</td>
       <td>3.000000</td>
@@ -4631,7 +4670,6 @@ tab8.describe()
       <td>3.00</td>
       <td>9.000000</td>
       <td>17.00000</td>
-      <td>14.000000</td>
       <td>...</td>
       <td>11.000000</td>
       <td>11.000000</td>
@@ -4646,7 +4684,7 @@ tab8.describe()
     </tr>
   </tbody>
 </table>
-<p>8 rows × 145 columns</p>
+<p>8 rows × 146 columns</p>
 </div>
 
 
@@ -4682,6 +4720,7 @@ product
   <thead>
     <tr style="text-align: right;">
       <th>STATE</th>
+      <th>0</th>
       <th>AB</th>
       <th>ACT</th>
       <th>AG</th>
@@ -4691,7 +4730,6 @@ product
       <th>AO</th>
       <th>AP</th>
       <th>AQ</th>
-      <th>AR</th>
       <th>...</th>
       <th>VE</th>
       <th>VI</th>
@@ -4732,6 +4770,7 @@ product
   <tbody>
     <tr>
       <th>0</th>
+      <td>1511</td>
       <td>24</td>
       <td>4</td>
       <td>4</td>
@@ -4741,7 +4780,6 @@ product
       <td>3</td>
       <td>15</td>
       <td>22</td>
-      <td>41</td>
       <td>...</td>
       <td>29</td>
       <td>24</td>
@@ -4756,6 +4794,7 @@ product
     </tr>
     <tr>
       <th>1</th>
+      <td>76</td>
       <td>1</td>
       <td>1</td>
       <td>0</td>
@@ -4764,7 +4803,6 @@ product
       <td>1</td>
       <td>0</td>
       <td>2</td>
-      <td>1</td>
       <td>1</td>
       <td>...</td>
       <td>2</td>
@@ -4780,7 +4818,7 @@ product
     </tr>
   </tbody>
 </table>
-<p>2 rows × 145 columns</p>
+<p>2 rows × 146 columns</p>
 </div>
 
 
@@ -4860,6 +4898,30 @@ df.groupby(by="STATE").sum()
   </thead>
   <tbody>
     <tr>
+      <th>0</th>
+      <td>96</td>
+      <td>173</td>
+      <td>91</td>
+      <td>96</td>
+      <td>76</td>
+      <td>84</td>
+      <td>68</td>
+      <td>90</td>
+      <td>95</td>
+      <td>395</td>
+      <td>...</td>
+      <td>165</td>
+      <td>408</td>
+      <td>244</td>
+      <td>113</td>
+      <td>109</td>
+      <td>103</td>
+      <td>271</td>
+      <td>83</td>
+      <td>259</td>
+      <td>352</td>
+    </tr>
+    <tr>
       <th>AB</th>
       <td>1</td>
       <td>2</td>
@@ -4954,30 +5016,6 @@ df.groupby(by="STATE").sum()
       <td>0</td>
       <td>2</td>
       <td>3</td>
-    </tr>
-    <tr>
-      <th>AL</th>
-      <td>2</td>
-      <td>7</td>
-      <td>2</td>
-      <td>6</td>
-      <td>2</td>
-      <td>4</td>
-      <td>5</td>
-      <td>1</td>
-      <td>4</td>
-      <td>14</td>
-      <td>...</td>
-      <td>7</td>
-      <td>16</td>
-      <td>6</td>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>8</td>
-      <td>1</td>
-      <td>7</td>
-      <td>12</td>
     </tr>
     <tr>
       <th>...</th>
@@ -5125,7 +5163,7 @@ df.groupby(by="STATE").sum()
     </tr>
   </tbody>
 </table>
-<p>145 rows × 29 columns</p>
+<p>146 rows × 29 columns</p>
 </div>
 
 
@@ -5156,6 +5194,7 @@ product.describe()
   <thead>
     <tr style="text-align: right;">
       <th>STATE</th>
+      <th>0</th>
       <th>AB</th>
       <th>ACT</th>
       <th>AG</th>
@@ -5165,7 +5204,6 @@ product.describe()
       <th>AO</th>
       <th>AP</th>
       <th>AQ</th>
-      <th>AR</th>
       <th>...</th>
       <th>VE</th>
       <th>VI</th>
@@ -5183,13 +5221,13 @@ product.describe()
     <tr>
       <th>count</th>
       <td>2.000000</td>
-      <td>2.00000</td>
-      <td>2.000000</td>
       <td>2.000000</td>
       <td>2.00000</td>
       <td>2.000000</td>
+      <td>2.000000</td>
       <td>2.00000</td>
       <td>2.000000</td>
+      <td>2.00000</td>
       <td>2.000000</td>
       <td>2.000000</td>
       <td>...</td>
@@ -5206,6 +5244,7 @@ product.describe()
     </tr>
     <tr>
       <th>mean</th>
+      <td>793.500000</td>
       <td>12.500000</td>
       <td>2.50000</td>
       <td>2.000000</td>
@@ -5215,7 +5254,6 @@ product.describe()
       <td>1.50000</td>
       <td>8.500000</td>
       <td>11.500000</td>
-      <td>21.000000</td>
       <td>...</td>
       <td>15.500000</td>
       <td>12.000000</td>
@@ -5230,6 +5268,7 @@ product.describe()
     </tr>
     <tr>
       <th>std</th>
+      <td>1014.698231</td>
       <td>16.263456</td>
       <td>2.12132</td>
       <td>2.828427</td>
@@ -5239,7 +5278,6 @@ product.describe()
       <td>2.12132</td>
       <td>9.192388</td>
       <td>14.849242</td>
-      <td>28.284271</td>
       <td>...</td>
       <td>19.091883</td>
       <td>16.970563</td>
@@ -5254,6 +5292,7 @@ product.describe()
     </tr>
     <tr>
       <th>min</th>
+      <td>76.000000</td>
       <td>1.000000</td>
       <td>1.00000</td>
       <td>0.000000</td>
@@ -5262,7 +5301,6 @@ product.describe()
       <td>1.000000</td>
       <td>0.00000</td>
       <td>2.000000</td>
-      <td>1.000000</td>
       <td>1.000000</td>
       <td>...</td>
       <td>2.000000</td>
@@ -5278,6 +5316,7 @@ product.describe()
     </tr>
     <tr>
       <th>25%</th>
+      <td>434.750000</td>
       <td>6.750000</td>
       <td>1.75000</td>
       <td>1.000000</td>
@@ -5287,7 +5326,6 @@ product.describe()
       <td>0.75000</td>
       <td>5.250000</td>
       <td>6.250000</td>
-      <td>11.000000</td>
       <td>...</td>
       <td>8.750000</td>
       <td>6.000000</td>
@@ -5302,6 +5340,7 @@ product.describe()
     </tr>
     <tr>
       <th>50%</th>
+      <td>793.500000</td>
       <td>12.500000</td>
       <td>2.50000</td>
       <td>2.000000</td>
@@ -5311,7 +5350,6 @@ product.describe()
       <td>1.50000</td>
       <td>8.500000</td>
       <td>11.500000</td>
-      <td>21.000000</td>
       <td>...</td>
       <td>15.500000</td>
       <td>12.000000</td>
@@ -5326,6 +5364,7 @@ product.describe()
     </tr>
     <tr>
       <th>75%</th>
+      <td>1152.250000</td>
       <td>18.250000</td>
       <td>3.25000</td>
       <td>3.000000</td>
@@ -5335,7 +5374,6 @@ product.describe()
       <td>2.25000</td>
       <td>11.750000</td>
       <td>16.750000</td>
-      <td>31.000000</td>
       <td>...</td>
       <td>22.250000</td>
       <td>18.000000</td>
@@ -5350,6 +5388,7 @@ product.describe()
     </tr>
     <tr>
       <th>max</th>
+      <td>1511.000000</td>
       <td>24.000000</td>
       <td>4.00000</td>
       <td>4.000000</td>
@@ -5359,7 +5398,6 @@ product.describe()
       <td>3.00000</td>
       <td>15.000000</td>
       <td>22.000000</td>
-      <td>41.000000</td>
       <td>...</td>
       <td>29.000000</td>
       <td>24.000000</td>
@@ -5374,14 +5412,14 @@ product.describe()
     </tr>
   </tbody>
 </table>
-<p>8 rows × 145 columns</p>
+<p>8 rows × 146 columns</p>
 </div>
 
 
 
 
 ```python
-product0 = pd.crosstab(df['Office Supplies'], df['ORDER_TYPE'])
+product0 = pd.crosstab(df['Office Supplies'], df['ORDER_TYPE']) 
 product0
 ```
 
@@ -7009,6 +7047,11 @@ product4.describe()
 
 # Model
 
+
+Regression analysis is supervised machine learning, this model helps to see the relationship between a certain number of features and target variable. Also,  Logistic Regression the probability of some events is represented as a linear function of combination of predictor variables, but no required linear relationship between dependent and independent variables. These variables can be represented in the binary values (0 0r one, False or True). With sigmoid function we can do the value of range 0 to 1.
+
+
+
 Prepared categorical data:
 
 Normalize is the process creating tables and establishing relationships between those tables according to rules designed both to protect the data and to make the database more flexible by eliminating redundancy and inconsistent dependency.
@@ -7021,7 +7064,7 @@ steps to create the model, in case I did Logistic Regression.
 
 
 ```python
-df['GenderCode'].value_counts(normalize=True)
+df['GenderCode'].value_counts(normalize=True) #Normalize the dataset.
 df['GenderCode'].describe()
 ```
 
@@ -7038,7 +7081,7 @@ df['GenderCode'].describe()
 
 
 ```python
-product_df = df.copy()
+product_df = df.copy() #Prepared the dataset to partition.
 train_set = product_df.sample(frac=0.75, random_state=0)
 test_set  = product_df.drop(train_set.index)
 
@@ -7049,16 +7092,16 @@ print('\nOriginal DataFrame')
 
     training set
           GenderCode STATE   CREDITCARD_TYPE PURCHASE_TOUCHPOINT   ORDER_TYPE  \
-    3569        Mrs.   NaN          Discover               Phone  MediumValue   
+    3569        Mrs.     0          Discover               Phone  MediumValue   
     12654        Mr.    CA          Discover               Phone     LowValue   
     5455        Mrs.    PG  American Express               Phone  MediumValue   
     13037        Mr.    CA       Diners Club             Desktop     LowValue   
-    7628         Mr.   NaN               JCB               Phone  MediumValue   
+    7628         Mr.     0               JCB               Phone  MediumValue   
     ...          ...   ...               ...                 ...          ...   
     9280        Mrs.    CA          Discover               Phone    HighValue   
     12280       Mrs.    CA  American Express             Desktop  MediumValue   
     8524        Mrs.    CA          Discover               Phone     LowValue   
-    4646         Mr.   NaN               JCB             Desktop  MediumValue   
+    4646         Mr.     0               JCB             Desktop  MediumValue   
     4569        Mrs.    MO       Diners Club               Phone     LowValue   
     
              GENERATION  Baby Food  Diapers  Formula  Lotion  ...  \
@@ -7107,7 +7150,7 @@ print('\nOriginal DataFrame')
 
 
 ```python
-target = 'Lotion'
+target = 'Lotion'  #create the target and train set.
 y_train = train_set[target]
 y_train.value_counts(normalize=True)
 ```
@@ -7123,10 +7166,10 @@ y_train.value_counts(normalize=True)
 
 
 ```python
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegressionCV
 from sklearn.model_selection import train_test_split
 
-linear_reg = LinearRegression()
+linear_reg = LogisticRegressionCV() #create the model.
 train_set, val = train_test_split(train_set, random_state=42)
 train_set.shape, val.shape
 ```
@@ -7140,6 +7183,7 @@ train_set.shape, val.shape
 
 
 ```python
+#create the features by products.
 features = ['Baby Food', 'Diapers', 'Formula', 
        'Baby wash', 'Wipes', 'Fresh Fruits', 'Fresh Vegetables', 'Beer',
        'Wine', 'Club Soda', 'Sports Drink', 'Chips', 'Popcorn', 'Oatmeal',
@@ -7151,13 +7195,15 @@ features = ['Baby Food', 'Diapers', 'Formula',
 
 
 ```python
-X_train = train_set[features]
+X_train = train_set[features] #create train set ann validation.
 y_train = train_set[target]
 X_val = val[features]
 y_val = val[target]
 ```
 
 ## Logistic Regression Model
+
+To Analysis the model, we use Logistic Regression that is a linear model where Y is the dependent variable, X represents the independent variables, B is the regression coefficients to be estimated, and e represents the errors are residuals. 
 
 
 ```python
@@ -7175,10 +7221,707 @@ X_val_scaled = scaler.transform(X_val_imputed)
 
 model = LogisticRegressionCV(cv=5, n_jobs=1, random_state=42) #Fit the Model
 model.fit(X_train_scaled, y_train)
-print('Validation Accuracy', model.score(X_val_scaled, y_val))
+print('Validation Accuracy', model.score(X_val_scaled, y_val)) #Model performance indicators that is not overfitting. 
 ```
 
     Validation Accuracy 0.9518446601941748
+
+
+
+```python
+sns.lmplot(x='Beer', y=target, data=df, scatter_kws={'alpha':0.05}); #Graphic compared two products Lotions and beer: in all this products the lotion has high preference in the customers.
+```
+
+
+![png](output_112_0.png)
+
+
+
+```python
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+
+df_scaler = df[df.columns[6:]].copy()
+```
+
+
+```python
+df_scaled = pd.DataFrame(data=scaler.fit_transform(df_scaler), columns=df_scaler.columns)
+```
+
+
+```python
+df_scaled.describe()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Baby Food</th>
+      <th>Diapers</th>
+      <th>Formula</th>
+      <th>Lotion</th>
+      <th>Baby wash</th>
+      <th>Wipes</th>
+      <th>Fresh Fruits</th>
+      <th>Fresh Vegetables</th>
+      <th>Beer</th>
+      <th>Wine</th>
+      <th>...</th>
+      <th>Cleaning Products</th>
+      <th>Condiments</th>
+      <th>Frozen Foods</th>
+      <th>Kitchen Items</th>
+      <th>Meat</th>
+      <th>Office Supplies</th>
+      <th>Personal Care</th>
+      <th>Pet Supplies</th>
+      <th>Sea Food</th>
+      <th>Spices</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>...</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+      <td>13733.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.053375</td>
+      <td>0.101289</td>
+      <td>0.056142</td>
+      <td>0.050681</td>
+      <td>0.053594</td>
+      <td>0.052647</td>
+      <td>0.054977</td>
+      <td>0.055487</td>
+      <td>0.054540</td>
+      <td>0.219835</td>
+      <td>...</td>
+      <td>0.101362</td>
+      <td>0.260176</td>
+      <td>0.137698</td>
+      <td>0.056797</td>
+      <td>0.055196</td>
+      <td>0.053739</td>
+      <td>0.146072</td>
+      <td>0.052501</td>
+      <td>0.139809</td>
+      <td>0.189835</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.224788</td>
+      <td>0.301722</td>
+      <td>0.230204</td>
+      <td>0.219353</td>
+      <td>0.225222</td>
+      <td>0.223336</td>
+      <td>0.227944</td>
+      <td>0.228936</td>
+      <td>0.227089</td>
+      <td>0.414150</td>
+      <td>...</td>
+      <td>0.301818</td>
+      <td>0.438747</td>
+      <td>0.344595</td>
+      <td>0.231464</td>
+      <td>0.228370</td>
+      <td>0.225510</td>
+      <td>0.353191</td>
+      <td>0.223044</td>
+      <td>0.346802</td>
+      <td>0.392185</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>...</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 29 columns</p>
+</div>
+
+
+
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import plot_confusion_matrix
+
+X_train, X_test, y_train, y_test = train_test_split(df_scaled.iloc[:,:-1], df_scaled.iloc[:,-1:], test_size=0.2, random_state=0)
+clf = LogisticRegression(C=10).fit(X_train, y_train)
+```
+
+
+```python
+clf.score(X_test, y_test)
+```
+
+
+
+
+    0.8248998907899526
+
+
+
+
+```python
+from sklearn.metrics import balanced_accuracy_score
+
+
+y_pred = clf.predict(X_test)
+balanced_accuracy_score(y_test, y_pred)
+```
+
+
+
+
+    0.658039950062422
+
+
+
+
+```python
+def conf_matrix(clf):
+    disp = plot_confusion_matrix(clf, X_test, y_test,
+                                display_labels= ['Spend', 'Saved'],
+                                cmap=plt.cm.Blues,
+                                normalize='true')
+    disp.ax_.set_title('Normalized Confusion Matrix');
+    disp.ax_.grid()
+conf_matrix(clf)
+```
+
+
+![png](output_119_0.png)
+
+
+
+```python
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import roc_auc_score
+
+grid_values = {'C': [10, 100, 1000, 5000, 10000, 12000, 16000, 20000]}
+grid_clf = LogisticRegression()
+
+grid_clf = GridSearchCV(grid_clf, param_grid = grid_values, scoring= 'balanced_accuracy')
+grid_clf.fit(X_train, y_train)
+y_pred = grid_clf.predict(X_test)
+print('Grid Best Parameter(max. balanced_accurracy):', grid_clf.best_params_)
+print('Grid Best Score(balanced_accuracy)', grid_clf.best_score_)
+```
+
+    Grid Best Parameter(max. balanced_accurracy): {'C': 10}
+    Grid Best Score(balanced_accuracy) 0.662179770545524
+
+
+
+```python
+conf_matrix(grid_clf)
+```
+
+
+![png](output_121_0.png)
+
+
+# EVALUATION
+
+# Report validation MAE and R2
+# MAE = (1/n) * Σ|yi – xi|
+
+
+```python
+!pip install category_encoders
+```
+
+    Collecting category_encoders
+      Using cached category_encoders-2.2.2-py2.py3-none-any.whl (80 kB)
+    Collecting pandas>=0.21.1
+      Using cached pandas-1.2.3-cp37-cp37m-manylinux1_x86_64.whl (9.9 MB)
+    Collecting numpy>=1.14.0
+      Using cached numpy-1.20.2-cp37-cp37m-manylinux2010_x86_64.whl (15.3 MB)
+    Collecting scikit-learn>=0.20.0
+      Using cached scikit_learn-0.24.1-cp37-cp37m-manylinux2010_x86_64.whl (22.3 MB)
+    Collecting statsmodels>=0.9.0
+      Using cached statsmodels-0.12.2-cp37-cp37m-manylinux1_x86_64.whl (9.5 MB)
+    Collecting patsy>=0.5.1
+      Using cached patsy-0.5.1-py2.py3-none-any.whl (231 kB)
+    Collecting scipy>=1.0.0
+      Using cached scipy-1.6.2-cp37-cp37m-manylinux1_x86_64.whl (27.4 MB)
+    Collecting python-dateutil>=2.7.3
+      Using cached python_dateutil-2.8.1-py2.py3-none-any.whl (227 kB)
+    Collecting pytz>=2017.3
+      Using cached pytz-2021.1-py2.py3-none-any.whl (510 kB)
+    Collecting threadpoolctl>=2.0.0
+      Using cached threadpoolctl-2.1.0-py3-none-any.whl (12 kB)
+    Collecting joblib>=0.11
+      Using cached joblib-1.0.1-py3-none-any.whl (303 kB)
+    Collecting six
+      Using cached six-1.15.0-py2.py3-none-any.whl (10 kB)
+    [31mERROR: tensorflow 2.1.0 has requirement scipy==1.4.1; python_version >= "3", but you'll have scipy 1.6.2 which is incompatible.[0m
+    [31mERROR: ibm-watson-machine-learning 1.0.38 has requirement pandas<=1.0.5, but you'll have pandas 1.2.3 which is incompatible.[0m
+    Installing collected packages: six, python-dateutil, pytz, numpy, pandas, threadpoolctl, scipy, joblib, scikit-learn, patsy, statsmodels, category-encoders
+    Successfully installed category-encoders-2.2.2 joblib-1.0.1 numpy-1.20.2 pandas-1.2.3 patsy-0.5.1 python-dateutil-2.8.1 pytz-2021.1 scikit-learn-0.24.1 scipy-1.6.2 six-1.15.0 statsmodels-0.12.2 threadpoolctl-2.1.0
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/patsy-0.5.1.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/pytz-2021.1.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/threadpoolctl.py already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/scikit_learn-0.24.1.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/category_encoders-2.2.2.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/pandas already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/dateutil already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/category_encoders already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/statsmodels already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/threadpoolctl-2.1.0.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/scipy-1.6.2.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/pytz already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/pandas-1.2.3.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/statsmodels-0.12.2.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/joblib already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/scipy already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/six.py already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/scikit_learn.libs already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/sklearn already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/numpy-1.20.2.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/patsy already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/__pycache__ already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/six-1.15.0.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/examples already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/python_dateutil-2.8.1.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/numpy.libs already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/scipy.libs already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/joblib-1.0.1.dist-info already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/numpy already exists. Specify --upgrade to force replacement.[0m
+    [33mWARNING: Target directory /home/spark/shared/user-libs/python3.7/bin already exists. Specify --upgrade to force replacement.[0m
+
+
+
+```python
+import category_encoders as ce
+from sklearn.metrics import r2_score
+
+encoder = ce.OneHotEncoder(use_cat_names=True) #Encoder and fit transform method with train set/val
+X_train_encoded = encoder.fit_transform(X_train)
+X_val_encoded = encoder.transform(X_val)
+
+linear = LogisticRegressionCV() #Logistic Regression 
+linear.fit(X_train_encoded, y_train)
+```
+
+
+
+
+    LogisticRegressionCV()
+
+
+
+
+```python
+import numpy as np
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_error
+
+y_pred_train = model.predict(X_train_encoded)
+y_pred_val = model.predict(X_val_encoded)
+
+print(f'Logistic Regression with {len(features)} features: {features}')
+print('______________________________________________')
+print('Train Root Mean Squared Error:', 
+    np.sqrt(mean_squared_error(y_train, y_pred_train)))
+print('Validation Root Mean Square Error:', 
+    np.sqrt(mean_squared_error(y_val, y_pred_val)))
+print('Train Mean Absolute Error:', 
+    mean_absolute_error(y_train, y_pred_train))
+print('Validation Mean Absolute Error:', 
+    mean_absolute_error(y_val, y_pred_val))
+print('Train R^2 Score:', 
+    r2_score(y_train, y_pred_train))
+print('Validation R^2 Score:', 
+    r2_score(y_val, y_pred_val))
+```
+
+    Logistic Regression with 28 features: ['Baby Food', 'Diapers', 'Formula', 'Baby wash', 'Wipes', 'Fresh Fruits', 'Fresh Vegetables', 'Beer', 'Wine', 'Club Soda', 'Sports Drink', 'Chips', 'Popcorn', 'Oatmeal', 'Medicines', 'Canned Foods', 'Cigarettes', 'Cheese', 'Cleaning Products', 'Condiments', 'Frozen Foods', 'Kitchen Items', 'Meat', 'Office Supplies', 'Personal Care', 'Pet Supplies', 'Sea Food', 'Spices']
+    ______________________________________________
+    Train Root Mean Squared Error: 0.4356454999635012
+    Validation Root Mean Square Error: 0.21944324962464726
+    Train Mean Absolute Error: 0.18978700163844894
+    Validation Mean Absolute Error: 0.048155339805825245
+    Train R^2 Score: -0.23424334344455722
+    Validation R^2 Score: -0.05059159526723778
+
+
+
+```python
+%matplotlib inline
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+for col in sorted(df.columns):
+    if df[col].nunique() <= 20:
+        sns.catplot(x=col, y='Lotion', data=df, kind='bar', color='yellow')
+        plt.xticks(rotation=45)
+        plt.show() #Graphic analysis the principal product lotioon compared with the other products and differents variance.
+```
+
+
+![png](output_127_0.png)
+
+
+
+![png](output_127_1.png)
+
+
+
+![png](output_127_2.png)
+
+
+
+![png](output_127_3.png)
+
+
+
+![png](output_127_4.png)
+
+
+
+![png](output_127_5.png)
+
+
+
+![png](output_127_6.png)
+
+
+
+![png](output_127_7.png)
+
+
+
+![png](output_127_8.png)
+
+
+
+![png](output_127_9.png)
+
+
+
+![png](output_127_10.png)
+
+
+
+![png](output_127_11.png)
+
+
+
+![png](output_127_12.png)
+
+
+
+![png](output_127_13.png)
+
+
+
+![png](output_127_14.png)
+
+
+
+![png](output_127_15.png)
+
+
+
+![png](output_127_16.png)
+
+
+
+![png](output_127_17.png)
+
+
+
+![png](output_127_18.png)
+
+
+
+![png](output_127_19.png)
+
+
+
+![png](output_127_20.png)
+
+
+
+![png](output_127_21.png)
+
+
+
+![png](output_127_22.png)
+
+
+
+![png](output_127_23.png)
+
+
+
+![png](output_127_24.png)
+
+
+
+![png](output_127_25.png)
+
+
+
+![png](output_127_26.png)
+
+
+
+![png](output_127_27.png)
+
+
+
+![png](output_127_28.png)
+
+
+
+![png](output_127_29.png)
+
+
+
+![png](output_127_30.png)
+
+
+
+![png](output_127_31.png)
+
+
+
+![png](output_127_32.png)
+
+
+
+![png](output_127_33.png)
+
+
+### Analysis:
+
+Logistic regression we analysis differents features in this dataset, the principal product the customer expense their money are the lotions, even in comparison that beer, cigarettes, and medicine if went be compared way to pay,  we can see that Diners Club is the credit card with the principal move in sales of Lotions,  followed by American Express.
+
+Compared the Lotion versus Cheese the customers have the same level to buy of preference at the time acquire this product.
+
+If we Compared the Lotion by generations, and see who the expense more in these items, and is the generation Z(born after 1997) -that will be the most target to sale this type of products-.
+
+The genders are Miss and Mr. 
+
+In the order type medium value is the quantity of money the customer expend. the preference most representative to buy Lotion is directly in the stores (desktop).
+
+
+# Calculate Negative Mean Absolute Error
+
+
+```python
+import category_encoders as ce
+from sklearn.feature_selection import f_regression, SelectKBest
+from sklearn.linear_model import Ridge
+from scipy.stats import randint, uniform
+from sklearn.pipeline import make_pipeline
+from sklearn.model_selection import cross_val_score
+
+pipeline = make_pipeline(
+    ce.OneHotEncoder(use_cat_names=True), 
+    SimpleImputer(strategy='mean'), 
+    StandardScaler(), 
+    SelectKBest(f_regression, k=20), 
+    Ridge(alpha=1.0)
+)
+```
+
+
+```python
+k = 3
+scores = cross_val_score(pipeline, X_train, y_train, cv=k, 
+                         scoring='neg_mean_absolute_error')
+```
+
+
+```python
+print(f'MAE for {k} folds:', -scores)
+```
+
+    MAE for 3 folds: [0.17884946 0.17892547 0.18024867]
+
+
+
+```python
+-scores.mean()
+```
+
+
+
+
+    0.17934119691805192
+
+
+
+
+```python
+plt.figure(figsize=(8,12)) #the customer that expend more money in beer are who used Master card following by American Express.
+df.groupby('CREDITCARD_TYPE')['Beer'].mean().sort_values().plot.barh();
+```
+
+
+![png](output_134_0.png)
 
 
 
@@ -7189,7 +7932,7 @@ coefficients.sort_values().plot.barh();
 ```
 
 
-![png](output_88_0.png)
+![png](output_135_0.png)
 
 
 
@@ -7199,9 +7942,13 @@ coefficients.sort_values().plot.barh(color='magenta', figsize=(7,20));
 ```
 
 
-![png](output_89_0.png)
+![png](output_136_0.png)
 
+
+### Analysis:
+
+if we remove the Lotion the model show us that the product where customer expend more money are cleaning products.
 
 # Conclusion:
 
-For market segmentation, this study represents a decision-making tool, market niche and characterization of the target market. The model showed a precision of 0.95, which shows the shareholders of the company that the actions to be taken can be supported by the best-selling products, the community to which it will be offered, and the age range.
+For market segmentation, this study represents a decision-making tool, market niche and characterization of the target market. The model showed a precision of 0.95, which shows the shareholders of the company that the actions to be taken can be supported by the best-selling products, the community to which it will be offered, and the age range.We can conclude that the baby boomers generation continues to be in force since they exceed the other generations in quantity, who when buying do not repair how much to spend or what they spend, that hygiene products and fragrances are a market to enter. On the other hand, generation Z has changed the way of acquiring products and this leads to not depending on physical locations for the sale of products, but when it comes to lotions and everything in this category, physical facilities are required.
